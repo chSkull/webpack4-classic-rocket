@@ -41,24 +41,30 @@ let css_config = {
     rules: [
       {
         test: /\.scss$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader
-          },
-          {
-            loader: 'css-loader'
-          },
-          {
-            loader: 'postcss-loader',
-            options: { ident: 'postcss' }
-          },
-          {
-            loader: 'sass-loader'
-          }
-          // Note that the loaders are ordered from bottom to top or right to left.
-          // Loaders act like functions, that’s why it’s from right to left.
-          // For example, css-loader(postcss-loader(sass-loader(resource)))
-        ]
+				use: [
+					{
+						loader: MiniCssExtractPlugin.loader,
+					},
+					{
+						loader: "css-loader",
+						options: {
+							sourceMap: devMode,
+						},
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							sourceMap: devMode,
+							ident: "postcss",
+						},
+					},
+					{
+						loader: "sass-loader",
+						options: {
+							sourceMap: devMode,
+						},
+					},
+				],
       },
       {
         test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/,
